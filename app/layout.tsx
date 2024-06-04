@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import React from "react";
+import Header from "@/components/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+const joseFin = Josefin_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Wild Oasis Website",
-  description: "Wild Oasis - A Boutique Hotel",
+  title: {
+    template: "%s - Wild Oasis",
+    default: "Home - Wild Oasis",
+  },
+  description:
+    "Wild Oasis - A Boutique Hotel - Luxurious wooden cabins - Located at heart of Berlin.",
 };
 
 export default function RootLayout({
@@ -17,7 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`${joseFin.className} bg-primary-950 text-white min-h-screen flex flex-col `}
+      >
+        <Header />
+
+        {/*Main Content*/}
+        <main className="wo-container flex-1 flex flex-col">{children}</main>
+      </body>
     </html>
   );
 }
