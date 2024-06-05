@@ -1,14 +1,18 @@
 import React, { Suspense } from "react";
 import Spinner from "@/components/reusable/Spinner";
 import CabinList from "@/components/CabinList";
+import { auth } from "@/auth";
 
 export const metadata = {
   title: "Cabins",
 };
 
-const Page = () => {
+const Page = async () => {
+  const session = await auth();
+  console.log(session);
+
   return (
-    <section>
+    <section className={"wo-container"}>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">
         Our Luxury Cabins
       </h1>

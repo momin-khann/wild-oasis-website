@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Page = () => {
   return (
-    <div className=" grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
+    <div className="wo-container grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
       <div className="col-span-5 lg:col-span-3">
         <h1 className="text-4xl mb-10 text-accent-400 font-medium">
           Welcome to The Wild Oasis

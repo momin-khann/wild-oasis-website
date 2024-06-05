@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <section className={""}>
+    <section className={"wo-container"}>
       <Image
         src={"/assets/bg.png"}
         alt={"bg image"}
