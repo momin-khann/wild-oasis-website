@@ -7,13 +7,20 @@ export const metadata = {
 
 const Page = () => {
   return (
-    <div className={"wo-container pt-20 flex justify-center items-center"}>
+    <div className="wo-container pt-20 flex flex-col gap-6 justify-center items-center">
+      <h2 className="text-3xl font-semibold">
+        Sign in to access your guest area
+      </h2>
+
       <form action={signInAction}>
-        <button
-          className="inline-block mt-4 bg-accent-500 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-accent-600 transition-all"
-          type="submit"
-        >
-          Signin with Google
+        <button className="flex items-center gap-6 text-lg border border-primary-300 px-10 py-4 font-medium">
+          <img
+            src="https://authjs.dev/img/providers/google.svg"
+            alt="Google logo"
+            height="24"
+            width="24"
+          />
+          <span>Continue with Google</span>
         </button>
       </form>
     </div>
