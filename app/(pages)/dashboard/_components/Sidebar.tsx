@@ -12,17 +12,17 @@ import SignOutButton from "../_components/SignOutButton";
 const navLinks = [
   {
     name: "Home",
-    href: "/account",
+    href: "/dashboard",
     icon: <HomeIcon className="h-5 w-5 text-primary-600" />,
   },
   {
     name: "Reservations",
-    href: "/account/reservations",
+    href: "/dashboard/reservation",
     icon: <CalendarDaysIcon className="h-5 w-5 text-primary-600" />,
   },
   {
-    name: "Guest profile",
-    href: "/account/profile",
+    name: "Profile",
+    href: "/dashboard/profile",
     icon: <UserIcon className="h-5 w-5 text-primary-600" />,
   },
 ];
