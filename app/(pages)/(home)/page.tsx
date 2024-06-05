@@ -13,7 +13,7 @@ export default function Home() {
         draggable={false}
       />
 
-      <div className={"flex flex-col items-center pt-24 gap-8"}>
+      <div className={"flex flex-col items-center pt-20 gap-8"}>
         <h1 className="text-6xl md:text-7xl text-center">
           Welcome To Paradise
         </h1>

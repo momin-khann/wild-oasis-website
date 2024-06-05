@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function Header() {
   return (
-    <header className=" py-5">
+    <header className="py-5 pb-12">
       <div className="wo-container flexBetween">
         {/* --- Logo  --- */}
         <a href="/" className="flexCenter gap-4">
