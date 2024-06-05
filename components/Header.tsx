@@ -1,7 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { auth } from "@/auth";
 
-function Header() {
+async function Header() {
+  const session = await auth();
+  const profileImage = session?.user?.image;
+
   return (
     <header className="py-5 pb-12">
       <div className="wo-container flexBetween">
@@ -39,13 +43,36 @@ function Header() {
                 About
               </Link>
             </li>
+
+            {/* If not logged in */}
+            {!session?.user && (
+              <li>
+                <Link
+                  href={"/login"}
+                  className="hover:text-accent-400 transition-colors"
+                >
+                  Login / Register
+                </Link>
+              </li>
+            )}
+
             <li>
-              <Link
-                href={"/account"}
-                className="hover:text-accent-400 transition-colors"
-              >
-                Guest area
-              </Link>
+              {/* If logged in */}
+              {profileImage && (
+                <Link
+                  href={"/dashboard"}
+                  className="hover:text-accent-400 transition-colors flex gap-4 items-center"
+                >
+                  <img
+                    className="h-8 rounded-full"
+                    src={profileImage}
+                    alt={"user image"}
+                  />
+                  <span>Guest area</span>
+                </Link>
+              )}
+
+              {session && !profileImage && <span>Guest area</span>}
             </li>
           </ul>
         </nav>

@@ -1,5 +1,5 @@
-import { getCabins } from "@/services";
 import CabinCard from "@/components/reusable/CabinCard";
+import { getCabins } from "@/app/_services";
 
 async function CabinList() {
   // noStore();
