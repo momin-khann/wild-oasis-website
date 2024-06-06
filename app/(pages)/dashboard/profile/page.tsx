@@ -1,4 +1,3 @@
-import React from "react";
 import UpdateProfileForm from "../_components/UpdateProfileForm";
 
 const Page = () => {
