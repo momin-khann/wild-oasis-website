@@ -1,4 +1,4 @@
-import CabinCard from "@/components/CabinCard";
+import CabinCard from "@/components/cabin/CabinCard";
 import { getCabins } from "@/app/_services";
 
 async function CabinList({ filter }: { filter: string }) {
