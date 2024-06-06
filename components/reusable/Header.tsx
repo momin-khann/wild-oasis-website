@@ -10,7 +10,7 @@ async function Header() {
     <header className="py-5 pb-12">
       <div className="wo-container flexBetween">
         {/* --- Logo  --- */}
-        <a href="/" className="flexCenter gap-4">
+        <a href="/public" className="flexCenter gap-4">
           <Image
             src={"/assets/logo.png"}
             height="60"

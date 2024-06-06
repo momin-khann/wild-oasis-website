@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { getCabin } from "@/app/_services";
+import { Suspense } from "react";
+import Spinner from "@/components/reusable/Spinner";
+import Reservation from "@/components/reservation/Reservation";
 
 interface Props {
   params: { id: number };
@@ -20,7 +23,7 @@ export default async function Page({ params }: Props) {
   return (
     <div className="wo-container mx-auto mt-8">
       {/* Cabin Details */}
-      <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
+      <div className=" grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
         <div className="relative scale-[1.15] -translate-x-3">
           <Image
             src={image}
@@ -63,9 +66,14 @@ export default async function Page({ params }: Props) {
       </div>
 
       <div>
-        <h2 className="text-5xl font-semibold text-center">
-          Reserve today. Pay on arrival.
+        <h2 className="text-5xl font-semibold text-center text-accent-500">
+          Reserve Now
         </h2>
+
+        {/* TODO: Date Selector & Reservation Form */}
+        <Suspense fallback={<Spinner />}>
+          <Reservation cabin={cabin} />
+        </Suspense>
       </div>
     </div>
   );

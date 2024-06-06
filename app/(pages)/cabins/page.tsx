@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import Spinner from "@/components/reusable/Spinner";
 import CabinList from "@/components/CabinList";
-import Filter from "@/components/Filter";
+import Filter from "@/components/reusable/Filter";
 
 export const metadata = {
   title: "Cabins",
