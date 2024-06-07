@@ -2,14 +2,29 @@
 
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
+import { useState } from "react";
+import { CabinType, DateRangeType, SettingsType } from "@/types";
 
-function DateSelector({ settings, bookedDates, cabin }: any) {
+interface Props {
+  settings: SettingsType;
+  bookedDates: Array<any>;
+  cabin: CabinType;
+}
+
+function DateSelector({ settings, bookedDates, cabin }: Props) {
+  const [range, setRange] = useState<DateRangeType>({
+    from: undefined,
+    to: undefined,
+  });
+
+  console.log(range);
+
   // CHANGE
   const regularPrice = 23;
   const discount = 23;
   const numNights = 23;
   const cabinPrice = 23;
-  const range = { from: null, to: null };
+  // const range = { from: null, to: null };
 
   // SETTINGS
   const { minBookingLength, maxBookingLength } = settings;
@@ -19,8 +34,10 @@ function DateSelector({ settings, bookedDates, cabin }: any) {
       <DayPicker
         className="pt-12 place-self-center"
         mode="range"
-        min={minBookingLength + 1}
-        max={maxBookingLength}
+        onSelect={(range) => setRange(range as DateRangeType)}
+        selected={range}
+        // min={minBookingLength + 1}
+        // max={maxBookingLength}
         fromMonth={new Date()}
         fromDate={new Date()}
         toYear={new Date().getFullYear() + 5}

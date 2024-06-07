@@ -5,7 +5,11 @@
 
 import Link from "next/link";
 
-export default function Error({ error }: any) {
+interface Props {
+  error: Error;
+}
+
+export default function Error({ error }: Props) {
   return (
     <main className="flex justify-center items-center flex-col gap-6">
       <h1 className="text-3xl font-semibold">Something went wrong!</h1>

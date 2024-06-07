@@ -1,5 +1,6 @@
 import CabinCard from "@/components/cabin/CabinCard";
 import { getCabins } from "@/app/_services";
+import { CabinType } from "@/types";
 
 async function CabinList({ filter }: { filter: string }) {
   // noStore();
@@ -21,9 +22,10 @@ async function CabinList({ filter }: { filter: string }) {
 
   return (
     <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14 pt-6 pb-16">
-      {displayedCabins.map((cabin) => (
-        <CabinCard cabin={cabin} key={cabin.id} />
-      ))}
+      {displayedCabins &&
+        displayedCabins.map((cabin) => (
+          <CabinCard cabin={cabin} key={cabin.id} />
+        ))}
     </div>
   );
 }

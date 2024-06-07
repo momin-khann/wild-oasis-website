@@ -1,4 +1,11 @@
-async function ReservationForm({ cabin, user }: any) {
+import { CabinType, SessionUserType } from "@/types";
+
+interface Props {
+  cabin: CabinType;
+  user: SessionUserType | null;
+}
+
+async function ReservationForm({ cabin, user }: Props) {
   const { maxCapacity } = cabin;
 
   return (
@@ -7,16 +14,16 @@ async function ReservationForm({ cabin, user }: any) {
         <p>Logged in as</p>
 
         <div className="flex gap-4 items-center">
-          {user.image && (
+          {user?.image && (
             <img
               referrerPolicy="no-referrer"
               className="h-8 rounded-full"
               src={user.image}
-              alt={user.name}
+              alt={user.name!}
             />
           )}
 
-          <p>{user.name}</p>
+          <p>{user?.name}</p>
         </div>
       </div>
 

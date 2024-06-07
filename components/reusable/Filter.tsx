@@ -9,7 +9,7 @@ function Filter() {
 
   const activeFilter = searchParams.get("capacity") ?? "all";
 
-  function handleFilter(filter) {
+  function handleFilter(filter: string) {
     const params = new URLSearchParams(searchParams);
     params.set("capacity", filter);
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
@@ -49,7 +49,14 @@ function Filter() {
   );
 }
 
-function Button({ filter, handleFilter, activeFilter, children }) {
+interface Props {
+  filter: string;
+  handleFilter: (arg: string) => void;
+  activeFilter: string;
+  children: React.ReactNode;
+}
+
+function Button({ filter, handleFilter, activeFilter, children }: Props) {
   return (
     <button
       className={`px-5 py-2 hover:bg-primary-700 ${

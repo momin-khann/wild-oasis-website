@@ -2,12 +2,13 @@ import React, { Suspense } from "react";
 import Spinner from "@/components/reusable/Spinner";
 import CabinList from "@/components/cabin/CabinList";
 import Filter from "@/components/reusable/Filter";
+import { SearchParamsProps } from "@/types";
 
 export const metadata = {
   title: "Cabins",
 };
 
-const Page = async ({ searchParams }: any) => {
+const Page = async ({ searchParams }: SearchParamsProps) => {
   const filter = searchParams?.capacity ?? "all";
 
   return (

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { eachDayOfInterval } from "date-fns";
 import { supabase } from "@/app/_lib/supabase";
+import { UserType } from "@/types";
 
 /////////////
 // GET
@@ -156,7 +157,7 @@ export async function getCountries() {
 /////////////
 // CREATE
 
-export async function createGuest(newGuest: any) {
+export async function createGuest(newGuest: UserType) {
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
   if (error) {
@@ -187,7 +188,7 @@ export async function createBooking(newBooking: any) {
 // UPDATE
 
 // The updatedFields is an object which should ONLY contain the updated data
-export async function updateGuest(id: number, updatedFields: any) {
+export async function updateGuest(id: number, updatedFields: UserType) {
   const { data, error } = await supabase
     .from("guests")
     .update(updatedFields)

@@ -1,8 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
+import { CabinType } from "@/types";
 
-const CabinDetails = ({ cabin }) => {
+interface Props {
+  cabin: CabinType;
+}
+
+const CabinDetails = ({ cabin }: Props) => {
   let { id, name, maxCapacity, regularPrice, discount, image, description } =
     cabin;
 

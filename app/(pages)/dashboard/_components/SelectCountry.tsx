@@ -3,7 +3,14 @@
 // Let's imagine your colleague already built this component 😃
 import { countries } from "@/data/countries";
 
-async function SelectCountry({ defaultCountry, name, id, className }: any) {
+interface Props {
+  defaultCountry?: string;
+  name: string;
+  id: string;
+  className?: string;
+}
+
+async function SelectCountry({ defaultCountry, name, id, className }: Props) {
   return (
     <select
       name={name}
