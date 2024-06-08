@@ -1,15 +1,15 @@
 import React, { Suspense } from "react";
 import Spinner from "@/components/reusable/Spinner";
-import CabinList from "@/components/CabinList";
-import { auth } from "@/auth";
+import CabinList from "@/components/cabin/CabinList";
+import Filter from "@/components/reusable/Filter";
+import { SearchParamsProps } from "@/types";
 
 export const metadata = {
   title: "Cabins",
 };
 
-const Page = async () => {
-  const session = await auth();
-  console.log(session);
+const Page = async ({ searchParams }: SearchParamsProps) => {
+  const filter = searchParams?.capacity ?? "all";
 
   return (
     <section className={"wo-container"}>
@@ -25,8 +25,12 @@ const Page = async () => {
         Welcome to paradise.
       </p>
 
-      <Suspense fallback={<Spinner />}>
-        <CabinList />
+      <div className="flex justify-end mb-8">
+        <Filter />
+      </div>
+
+      <Suspense fallback={<Spinner />} key={filter}>
+        <CabinList filter={filter} />
       </Suspense>
     </section>
   );

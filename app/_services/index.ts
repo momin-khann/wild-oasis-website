@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { eachDayOfInterval } from "date-fns";
 import { supabase } from "@/app/_lib/supabase";
+import { DbUserType, UserType } from "@/types";
 
 /////////////
 // GET
@@ -11,9 +12,6 @@ export async function getCabin(id: number) {
     .select("*")
     .eq("id", id)
     .single();
-
-  // For testing
-  // await new Promise((res) => setTimeout(res, 1000));
 
   if (error) {
     console.error(error);
@@ -42,9 +40,6 @@ export const getCabins = async () => {
     .from("cabins")
     .select("id, name, maxCapacity, regularPrice, discount, image")
     .order("name");
-
-  // For testing
-  // await new Promise((res) => setTimeout(res, 2000));
 
   if (error) {
     console.error(error);
@@ -143,9 +138,10 @@ export async function getSettings() {
 export async function getCountries() {
   try {
     const res = await fetch(
-      "https://restcountries.com/v2/all?fields=name,flag",
+      "https://restcountries.com/v3.1/all?fields=name,flags",
     );
     const countries = await res.json();
+
     return countries;
   } catch {
     throw new Error("Could not fetch countries");
@@ -155,7 +151,7 @@ export async function getCountries() {
 /////////////
 // CREATE
 
-export async function createGuest(newGuest: any) {
+export async function createGuest(newGuest: DbUserType) {
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
   if (error) {
@@ -186,7 +182,7 @@ export async function createBooking(newBooking: any) {
 // UPDATE
 
 // The updatedFields is an object which should ONLY contain the updated data
-export async function updateGuest(id: number, updatedFields: any) {
+export async function updateGuest(id: number, updatedFields: UserType) {
   const { data, error } = await supabase
     .from("guests")
     .update(updatedFields)

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import React from "react";
-import Header from "@/components/Header";
+import Header from "@/components/reusable/Header";
+import { ReservationProvider } from "@/app/_hooks/useReservation";
 
 const joseFin = Josefin_Sans({ subsets: ["latin"] });
 
@@ -28,7 +29,9 @@ export default function RootLayout({
         <Header />
 
         {/*Main Content*/}
-        <main className="flex-1 flex flex-col">{children}</main>
+        <main className="flex-1 flex flex-col">
+          <ReservationProvider>{children}</ReservationProvider>
+        </main>
       </body>
     </html>
   );
