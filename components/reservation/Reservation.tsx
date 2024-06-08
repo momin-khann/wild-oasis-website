@@ -3,7 +3,7 @@ import ReservationForm from "./ReservationForm";
 import { getBookedDatesByCabinId, getSettings } from "@/app/_services";
 import { auth } from "@/auth";
 import LoginMessage from "@/components/reusable/LoginMessage";
-import { CabinType, SessionUserType } from "@/types";
+import { CabinType } from "@/types";
 
 interface Props {
   cabin: CabinType;

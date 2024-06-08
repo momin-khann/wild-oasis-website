@@ -10,7 +10,17 @@ export interface CabinType {
 
 export interface UserType {
   id: number;
-  name: string;
+  name?: string;
+  email: string;
+  image?: string;
+  nationalID?: string;
+  nationality?: string;
+  countryFlag?: string;
+}
+
+export interface DbUserType {
+  id: number;
+  fullName: string;
   email: string;
   image?: string;
   nationalID?: string;

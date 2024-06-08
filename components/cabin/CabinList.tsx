@@ -1,6 +1,5 @@
 import CabinCard from "@/components/cabin/CabinCard";
 import { getCabins } from "@/app/_services";
-import { CabinType } from "@/types";
 
 async function CabinList({ filter }: { filter: string }) {
   // noStore();

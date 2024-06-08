@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { eachDayOfInterval } from "date-fns";
 import { supabase } from "@/app/_lib/supabase";
-import { UserType } from "@/types";
+import { DbUserType, UserType } from "@/types";
 
 /////////////
 // GET
@@ -12,9 +12,6 @@ export async function getCabin(id: number) {
     .select("*")
     .eq("id", id)
     .single();
-
-  // For testing
-  // await new Promise((res) => setTimeout(res, 1000));
 
   if (error) {
     console.error(error);
@@ -43,9 +40,6 @@ export const getCabins = async () => {
     .from("cabins")
     .select("id, name, maxCapacity, regularPrice, discount, image")
     .order("name");
-
-  // For testing
-  // await new Promise((res) => setTimeout(res, 2000));
 
   if (error) {
     console.error(error);
@@ -157,7 +151,7 @@ export async function getCountries() {
 /////////////
 // CREATE
 
-export async function createGuest(newGuest: UserType) {
+export async function createGuest(newGuest: DbUserType) {
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
   if (error) {

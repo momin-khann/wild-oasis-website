@@ -28,8 +28,7 @@ function ReservationProvider({ children }: { children: React.ReactNode }) {
 
 function useReservation() {
   const context = useContext(ReservationContext);
-  if (context === undefined)
-    throw new Error("Context was used outside provider");
+  if (context === undefined) throw new Error("Wrap context with provider.");
   return context;
 }
 

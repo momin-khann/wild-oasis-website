@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Spinner from "@/components/reusable/Spinner";
 import Reservation from "@/components/reservation/Reservation";
 import CabinDetails from "@/components/cabin/CabinDetails";
+import ReservationReminder from "@/components/reservation/ReservationReminder";
 
 interface Props {
   params: { id: number };
@@ -28,6 +29,7 @@ export default async function Page({ params }: Props) {
 
         <Suspense fallback={<Spinner />}>
           <Reservation cabin={cabin} />
+          <ReservationReminder />
         </Suspense>
       </div>
     </div>

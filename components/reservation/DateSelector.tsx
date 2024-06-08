@@ -2,8 +2,8 @@
 
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import { useState } from "react";
 import { CabinType, DateRangeType, SettingsType } from "@/types";
+import { useReservation } from "@/app/_hooks/useReservation";
 
 interface Props {
   settings: SettingsType;
@@ -12,12 +12,7 @@ interface Props {
 }
 
 function DateSelector({ settings, bookedDates, cabin }: Props) {
-  const [range, setRange] = useState<DateRangeType>({
-    from: undefined,
-    to: undefined,
-  });
-
-  console.log(range);
+  const { range, setRange, resetRange } = useReservation();
 
   // CHANGE
   const regularPrice = 23;
@@ -37,7 +32,7 @@ function DateSelector({ settings, bookedDates, cabin }: Props) {
         onSelect={(range) => setRange(range as DateRangeType)}
         selected={range}
         // min={minBookingLength + 1}
-        // max={maxBookingLength}
+        max={maxBookingLength}
         fromMonth={new Date()}
         fromDate={new Date()}
         toYear={new Date().getFullYear() + 5}
@@ -74,7 +69,10 @@ function DateSelector({ settings, bookedDates, cabin }: Props) {
         </div>
 
         {range.from || range.to ? (
-          <button className="border border-primary-800 py-2 px-4 text-sm font-semibold">
+          <button
+            onClick={resetRange}
+            className="border border-primary-800 py-2 px-4 text-sm font-semibold"
+          >
             Clear
           </button>
         ) : null}
